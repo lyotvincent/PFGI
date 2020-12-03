@@ -171,7 +171,7 @@ class Assembly:
             command_line += '--cov-cutoff '+str(spades_conf['--cov-cutoff'])+' '
         if spades_conf['--phred-offset'] != None:
             command_line += '--phred-offset '+str(spades_conf['--phred-offset'])+' '
-        command_line = '-o '+self.result_dir+'/spades_out/'
+        command_line += '-o '+self.result_dir+'/spades_out/'
         
         completed_process = subprocess.run(command_line, shell=True)
         if completed_process.returncode == 0:
