@@ -49,12 +49,23 @@ class Resequencing:
             elif assembly_conf['velvet']['enable'] != False:
                 assembly_obj.velvet_single()
                 assembly_result = self.result_dir+'/identification/assembly/velvet_output/contigs.fa'
-            # else:
+            else:
+                assembly_result = self.input_file
             #     assembly_obj.megahit_single()
             #     assembly_result = self.result_dir+'/identification/assembly/megahit_out/final.contigs.fa'
             print('end assembly')
             print("Begin QUAST")
-            subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            try:
+                completed_process = subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                if completed_process.returncode == 0:
+                    print('Assembly runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+                else:
+                    print('An error occurred in Assembly. Please install QUAST.')
+                    print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print("Please install QUAST")
             print("End QUAST")
         else:
             print('begin assembly')
@@ -69,12 +80,23 @@ class Resequencing:
             elif assembly_conf['velvet']['enable'] != False:
                 assembly_obj.velvet_paired()
                 assembly_result = self.result_dir+'/identification/assembly/velvet_output/contigs.fa'
-            # else:
+            else:
+                assembly_result = self.input_file
             #     assembly_obj.megahit_paired()
             #     assembly_result = self.result_dir+'/identification/assembly/megahit_out/final.contigs.fa'
             print('end assembly')
             print("Begin QUAST")
-            subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            try:
+                completed_process = subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                if completed_process.returncode == 0:
+                    print('Assembly runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+                else:
+                    print('An error occurred in Assembly. Please install QUAST.')
+                    print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print("Please install QUAST")
             print("End QUAST")
         
         temp_file = open(os.path.abspath('.') + '/' + self.result_dir+'/Summary_of_results.html', 'a+')
@@ -127,6 +149,12 @@ class Resequencing:
         accession_version_list = [accession_version_list[i][0] for i in range(int(self.conf["identification"]['number_of_candidate_similar_genome']))]
         # print("accession_version_list="+str(accession_version_list))
 
+        temp_file = open(os.path.abspath('.') + '/' + self.result_dir+'/Summary_of_results.html', 'a+')
+        temp_file.write('<ul>\n')
+        temp_file.write('<li>candiate closest genome list %s \n' % (accession_version_list))
+        temp_file.write('</ul>\n')
+        temp_file.close()
+
         for accession_version in accession_version_list:
             scripts.download_nucleotide.download_by_accession_version(self.result_dir, accession_version)
 
@@ -161,14 +189,36 @@ class Resequencing:
             assembly_obj.canu()
             assembly_result = self.result_dir+'/identification/assembly/canu_output/canu_assembly_result.contigs.fasta'
             print("Begin QUAST")
-            subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            try:
+                completed_process = subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                if completed_process.returncode == 0:
+                    print('Assembly runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+                else:
+                    print('An error occurred in Assembly. Please install QUAST.')
+                    print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print("Please install QUAST")
             print("End QUAST")
         elif assembly_conf['spades']['enable'] != False:
             assembly_obj.spades_3gs()
             assembly_result = self.result_dir+'/identification/assembly/spades_out/contigs.fasta'
             print("Begin QUAST")
-            subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            try:
+                completed_process = subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                if completed_process.returncode == 0:
+                    print('Assembly runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+                else:
+                    print('An error occurred in Assembly. Please install QUAST.')
+                    print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print("Please install QUAST")
             print("End QUAST")
+        else:
+            assembly_result = self.input_file
         # else:
         #     assembly_obj.canu()
         #     assembly_result = self.result_dir+'/identification/assembly/canu_output/canu_assembly_result.contigs.fasta'
@@ -228,6 +278,12 @@ class Resequencing:
         accession_version_list = scripts.handle_blast_xml_result.handle_blast_xml_result_outfmt7(self.result_dir+"/identification/ncbi_fungi_blast_out.xml")
         accession_version_list = [accession_version_list[i][0] for i in range(int(self.conf["identification"]['number_of_candidate_similar_genome']))]
         # print("accession_version_list="+str(accession_version_list))
+
+        temp_file = open(os.path.abspath('.') + '/' + self.result_dir+'/Summary_of_results.html', 'a+')
+        temp_file.write('<ul>\n')
+        temp_file.write('<li>candiate closest genome list %s \n' % (accession_version_list))
+        temp_file.write('</ul>\n')
+        temp_file.close()
 
         for accession_version in accession_version_list:
             time.sleep(10)

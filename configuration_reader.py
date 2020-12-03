@@ -442,7 +442,7 @@ class ConfigurationReader:
             self.conf["annotation"]["cds_annotation"]["alignment_tool"]["bowtie2"] = False
         if annotation_sheet.cell_value(6, 3) != True:
             self.conf["annotation"]["cds_annotation"]["alignment_tool"]["snap"] = False
-        
+
         if annotation_sheet.cell_value(6, 5) != "":
             self.conf["annotation"]["cds_annotation"]["alignment_tool"]["minimap2"]["-H"] = annotation_sheet.cell_value(5, 5)
         if annotation_sheet.cell_value(7, 5) != "":

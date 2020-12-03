@@ -19,7 +19,7 @@ class Preprocessing:
     def fastqc_single_end(self, folder_name):
         print("begin fastqc single end")
         fastqc_conf = self.conf['preprocessing']['fastqc']
-        com = os.path.dirname(os.path.realpath(__file__))+'/external_tools/FastQC/fastqc -o '+self.result_dir+'/preprocessing/'+folder_name+' '
+        com = 'fastqc -o '+self.result_dir+'/preprocessing/'+folder_name+' '
         if fastqc_conf['--casava'] != None:
             com += "--casava "
         if fastqc_conf['--nofilter'] != None:
@@ -38,15 +38,23 @@ class Preprocessing:
             com += "-k "+str(fastqc_conf['-t'])+' '
         com += self.input_file
         try:
-            subprocess.run(com, shell=True, check=True)
+            completed_process = subprocess.run(com, shell=True)
+            if completed_process.returncode == 0:
+                print('Preprocessing runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+            else:
+                print('An error occurred in Assembly. Please install fastqc.')
+                print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/FastQC/'+com, shell=True, check=True)
         except Exception as e:
             print(e)
+            print('An error occurred in Assembly. Please install fastqc.')
+            exit()
         print("end fastqc single end")
     
     def fastqc_paired_end(self, folder_name):
         print("begin fastqc paired end")
         fastqc_conf = self.conf['preprocessing']['fastqc']
-        com = os.path.dirname(os.path.realpath(__file__))+'/external_tools/FastQC/fastqc -o '+self.result_dir+'/preprocessing/'+folder_name+' '
+        com = 'fastqc -o '+self.result_dir+'/preprocessing/'+folder_name+' '
         if fastqc_conf['--casava'] != None:
             com += "--casava "
         if fastqc_conf['--nofilter'] != None:
@@ -65,15 +73,23 @@ class Preprocessing:
             com += "-k "+str(fastqc_conf['-t'])+' '
         com += self.input_file_1+" "+self.input_file_2
         try:
-            subprocess.run(com, shell=True, check=True)
+            completed_process = subprocess.run(com, shell=True)
+            if completed_process.returncode == 0:
+                print('Preprocessing runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+            else:
+                print('An error occurred in Assembly. Please install fastqc.')
+                print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/FastQC/'+com, shell=True, check=True)
         except Exception as e:
             print(e)
+            print('An error occurred in Assembly. Please install fastqc.')
+            exit()
         print("end fastqc paired end")
     
     def fastp_single_end(self):
         print("begin fastp_single_end")
         fastp_conf = self.conf['preprocessing']['fastp']
-        com = os.path.dirname(os.path.realpath(__file__))+'/external_tools/fastp -i '+self.input_file+' -o '+self.result_dir+'/preprocessing/fastp_output.fastq -j '+self.result_dir+'/preprocessing/fastp.json -h '+self.result_dir+'/preprocessing/fastp.html '
+        com = 'fastp -i '+self.input_file+' -o '+self.result_dir+'/preprocessing/fastp_output.fastq -j '+self.result_dir+'/preprocessing/fastp.json -h '+self.result_dir+'/preprocessing/fastp.html '
         if fastp_conf['--phred64'] != None:
             com += '--phred64 '
         if fastp_conf['-V'] != None:
@@ -182,13 +198,25 @@ class Preprocessing:
             com += '-P '+str(fastp_conf['-P'])+' '
         if fastp_conf['-w'] != None:
             com += '-w '+str(fastp_conf['-w'])
-        subprocess.run(com, shell=True, check=True)
+
+        completed_process = subprocess.run(com, shell=True)
+        if completed_process.returncode == 0:
+            print('Preprocessing runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+        else:
+            print('An error occurred in Assembly. Please install fastp.')
+            print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+            try:
+                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/'+com, shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print('An error occurred in Assembly. Please install fastp.')
+                exit()
         print("end fastp_single_end")
     
     def fastp_paired_end(self):
         print("begin fastp_paired_end")
         fastp_conf = self.conf['preprocessing']['fastp']
-        com = os.path.dirname(os.path.realpath(__file__))+'/external_tools/fastp --in1 '+self.input_file_1+" --in2 "+self.input_file_2+' --out1 '+self.result_dir+'/preprocessing/fastp_output_1.fastq --out2 '+self.result_dir+'/preprocessing/fastp_output_2.fastq -j '+self.result_dir+'/preprocessing/fastp.json -h '+self.result_dir+'/preprocessing/fastp.html '
+        com = 'fastp --in1 '+self.input_file_1+" --in2 "+self.input_file_2+' --out1 '+self.result_dir+'/preprocessing/fastp_output_1.fastq --out2 '+self.result_dir+'/preprocessing/fastp_output_2.fastq -j '+self.result_dir+'/preprocessing/fastp.json -h '+self.result_dir+'/preprocessing/fastp.html '
         if fastp_conf['--phred64'] != None:
             com += '--phred64 '
         if fastp_conf['-V'] != None:
@@ -297,13 +325,24 @@ class Preprocessing:
             com += '-P '+str(fastp_conf['-P'])+' '
         if fastp_conf['-w'] != None:
             com += '-w '+str(fastp_conf['-w'])
-        subprocess.run(com, shell=True, check=True)
+        completed_process = subprocess.run(com, shell=True)
+        if completed_process.returncode == 0:
+            print('Preprocessing runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+        else:
+            print('An error occurred in Assembly. Please install fastp.')
+            print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+            try:
+                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/'+com, shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print('An error occurred in Assembly. Please install fastp.')
+                exit()
         print("end fastp_paired_end")
     
     def trimmomatic_single_end(self):
         print("begin trimmomatic_single_end")
         trimmomatic_conf = self.conf['preprocessing']['trimmomatic']
-        com = 'java -jar %s/external_tools/trimmomatic-0.39.jar SE ' % os.path.dirname(os.path.realpath(__file__))
+        com = ''
         if trimmomatic_conf['-threads'] != None:
             com += "-threads "+str(trimmomatic_conf['-threads'])+' '
         if trimmomatic_conf['-phred33'] != None:
@@ -331,13 +370,25 @@ class Preprocessing:
             com += "MINLEN:"+str(trimmomatic_conf['MINLEN'])
         else:
             com += "MINLEN:36"
-        subprocess.run(com, shell=True, check=True)
+
+        completed_process = subprocess.run('trimmomatic SE '+com, shell=True)
+        if completed_process.returncode == 0:
+            print('Preprocessing runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+        else:
+            print('An error occurred in Assembly. Please install trimmomatic.')
+            print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+            try:
+                completed_process = subprocess.run('java -jar %s/external_tools/trimmomatic-0.39.jar SE ' % os.path.dirname(os.path.realpath(__file__))+com, shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print('An error occurred in Assembly. Please install trimmomatic.')
+                exit()
         print("end trimmomatic_single_end")
         
     def trimmomatic_paired_end(self):
         print("begin trimmomatic_paired_end")
         trimmomatic_conf = self.conf['preprocessing']['trimmomatic']
-        com = 'java -jar %s/external_tools/trimmomatic-0.39.jar PE ' % os.path.dirname(os.path.realpath(__file__))
+        com = ''
         if trimmomatic_conf['-threads'] != None:
             com += "-threads "+str(trimmomatic_conf['-threads'])+' '
         if trimmomatic_conf['-phred33'] != None:
@@ -365,7 +416,19 @@ class Preprocessing:
             com += "MINLEN:"+str(trimmomatic_conf['MINLEN'])
         else:
             com += "MINLEN:36"
-        subprocess.run(com, shell=True, check=True)
+        
+        completed_process = subprocess.run('trimmomatic PE '+com, shell=True)
+        if completed_process.returncode == 0:
+            print('Preprocessing runs successfully! CompleteProcess.returncode = %s.' % completed_process.returncode)
+        else:
+            print('An error occurred in Assembly. Please install trimmomatic.')
+            print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
+            try:
+                completed_process = subprocess.run('java -jar %s/external_tools/trimmomatic-0.39.jar PE ' % os.path.dirname(os.path.realpath(__file__))+com, shell=True, check=True)
+            except Exception as e:
+                print(e)
+                print('An error occurred in Assembly. Please install trimmomatic.')
+                exit()
         print("end trimmomatic_paired_end")
 
     def cutadapt_single_end(self):
@@ -425,7 +488,12 @@ class Preprocessing:
         if cutadapt_conf['--discard-casava'] != None:
             com += "--discard-casava "
         com += '-o '+self.result_dir+'/preprocessing/cutadapt_output.fastq '+self.input_file
-        subprocess.run(com, shell=True, check=True)
+        try:
+            subprocess.run(com, shell=True, check=True)
+        except Exception as e:
+            print(e)
+            print('Please install cutadapt.')
+            exit()
         print("end cutadapt_single_end")
 
     def cutadapt_paired_end(self):
@@ -491,7 +559,12 @@ class Preprocessing:
         if cutadapt_conf['--pair-filter'] != None:
             com += "--pair-filter "+cutadapt_conf['--pair-filter']+' '
         com += '-o '+self.result_dir+'/preprocessing/cutadapt_output_1.fastq -p '+self.result_dir+'/preprocessing/cutadapt_output_2.fastq '+self.input_file_1+' '+self.input_file_2
-        subprocess.run(com, shell=True, check=True)
+        try:
+            subprocess.run(com, shell=True, check=True)
+        except Exception as e:
+            print(e)
+            print('Please install cutadapt.')
+            exit()
         print("end cutadapt_paired_end")
 
 
@@ -511,7 +584,12 @@ class Preprocessing:
             com += "-x "
         if sickle_conf['-n'] != None:
             com += "-n "
-        subprocess.run(com, shell=True, check=True)
+        try:
+            subprocess.run(com, shell=True, check=True)
+        except Exception as e:
+            print(e)
+            print('Please install sickle.')
+            exit()
         print("end sickle single end")
 
 
@@ -531,7 +609,12 @@ class Preprocessing:
             com += "-x "
         if sickle_conf['-n'] != None:
             com += "-n "
-        subprocess.run(com, shell=True, check=True)
+        try:
+            subprocess.run(com, shell=True, check=True)
+        except Exception as e:
+            print(e)
+            print('Please install sickle.')
+            exit()
         print("end sickle paired end")
 
     def soapnuke_single_end(self):
