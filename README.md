@@ -3,7 +3,7 @@
 ## introduce
 PFGI is a bioinformatics pipeline for fungal genome identification and annotation.  
 ## How to use the tool
-1. Download: clone from github: git clone https://github.com/lyotvincent/OntoVarSearch.git  
+1. Download: clone from github: git clone https://github.com/lyotvincent/PFGI.git  
 2. Configuration file: User could set software parameters in pfgi_configuration_template.xlsx and use "-conf_file_path pfgi_configuration.xlsx" to let program know where the configuration file is.  
 3. Download fungal genomes & build database. `python download_fungi_data.py`. Next, the database path should be written in the configuration file.  
 4. run this command to get 'help': python fungi_pipeline.py -h  
