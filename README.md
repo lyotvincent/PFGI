@@ -26,7 +26,7 @@ The ✔ in 'conda' column means that the software cound install by conda.
 |fastp|✔|<https://github.com/OpenGene/fastp>|
 |trimmomatic|✔|<https://github.com/timflutre/trimmomatic>|
 |cutadapt|✔|<https://github.com/marcelm/cutadapt>|
-|sickle|✔|<https://github.com/najoshi/sickle>|
+|sickle-trim|✔|<https://github.com/najoshi/sickle>|
 |megahit|✔|<https://github.com/voutcn/megahit>|
 |spades|✔|<https://github.com/ablab/spades>|
 |velvet|✔|<https://github.com/dzerbino/velvet>|
@@ -34,10 +34,12 @@ The ✔ in 'conda' column means that the software cound install by conda.
 |QUAST|✔|<https://github.com/ablab/quast>|
 |BLAST|✔|<https://blast.ncbi.nlm.nih.gov/Blast.cgi>|
 |prokka|✔|<https://github.com/tseemann/prokka>|
-|prodigal|✔|<https://github.com/hyattpd/Prodigal>|
 |snap-aligner|✔|<https://github.com/amplab/snap>|
 |bowtie2|✔|<https://github.com/BenLangmead/bowtie2>|
 |samtools|✔|<https://github.com/samtools/samtools>|
 |minimap2|✔|<https://github.com/lh3/minimap2>|
 |biopython|✔|pip|
 |bcbio-gff|✔|pip|
+
+Install in one line:
+`conda install -y fastqc fastp trimmomatic cutadapt sickle-trim megahit spades velvet canu quast blast prokka bowtie2 snap-aligner bowtie2 samtools minimap2 biopython bcbio-gff`
