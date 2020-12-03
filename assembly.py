@@ -22,7 +22,7 @@ class Assembly:
     def megahit_single(self):
         print("begin megahit_single_end")
         megahit_conf = self.conf['megahit']
-        command_line = 'megahit ' % os.path.dirname(os.path.realpath(__file__))
+        command_line = 'megahit '
         if megahit_conf['--min-count'] != None:
             command_line += '--min-count '+str(megahit_conf['--min-count'])+' '
         if megahit_conf['--k-list'] != None:
@@ -74,7 +74,7 @@ class Assembly:
     def megahit_paired(self):
         print("begin megahit_paired_end")
         megahit_conf = self.conf['megahit']
-        command_line = 'megahit ' % os.path.dirname(os.path.realpath(__file__))
+        command_line = 'megahit '
         if megahit_conf['--min-count'] != None:
             command_line += '--min-count '+str(megahit_conf['--min-count'])+' '
         if megahit_conf['--k-list'] != None:
