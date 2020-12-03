@@ -26,9 +26,11 @@ The ✔ in 'conda' column means that the software cound install by conda.
 |fastp|✔|<https://github.com/OpenGene/fastp>|
 |trimmomatic|✔|<https://github.com/timflutre/trimmomatic>|
 |cutadapt|✔|<https://github.com/marcelm/cutadapt>|
+|sickle|✔|<https://github.com/najoshi/sickle>|
 |megahit|✔|<https://github.com/voutcn/megahit>|
 |spades|✔|<https://github.com/ablab/spades>|
 |velvet|✔|<https://github.com/dzerbino/velvet>|
+|canu|✔|<https://github.com/marbl/canu>|
 |QUAST|✔|<https://github.com/ablab/quast>|
 |BLAST|✔|<https://blast.ncbi.nlm.nih.gov/Blast.cgi>|
 |prokka|✔|<https://github.com/tseemann/prokka>|
@@ -36,7 +38,6 @@ The ✔ in 'conda' column means that the software cound install by conda.
 |snap-aligner|✔|<https://github.com/amplab/snap>|
 |bowtie2|✔|<https://github.com/BenLangmead/bowtie2>|
 |samtools|✔|<https://github.com/samtools/samtools>|
-|bedtools|✔|<https://github.com/arq5x/bedtools2>|
 |minimap2|✔|<https://github.com/lh3/minimap2>|
 |biopython|✔|pip
 |bcbio-gff|✔|pip
