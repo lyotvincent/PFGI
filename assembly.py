@@ -24,23 +24,23 @@ class Assembly:
         megahit_conf = self.conf['megahit']
         command_line = 'megahit '
         if megahit_conf['--min-count'] != None:
-            command_line += '--min-count '+str(megahit_conf['--min-count'])+' '
+            command_line += '--min-count %s ' % int(megahit_conf['--min-count'])
         if megahit_conf['--k-list'] != None:
             command_line += '--k-list '+str(megahit_conf['--k-list'])+' '
         if megahit_conf['--no-mercy'] != None:
             command_line += '--no-mercy '
         if megahit_conf['--bubble-level'] != None:
-            command_line += '--bubble-level '+str(megahit_conf['--bubble-level'])+' '
+            command_line += '--bubble-level %s ' % int(megahit_conf['--bubble-level'])
         if megahit_conf['--merge-level'] != None:
             command_line += '--merge-level '+str(megahit_conf['--merge-level'])+' '
         if megahit_conf['--prune-level'] != None:
-            command_line += '--prune-level '+str(megahit_conf['--prune-level'])+' '
+            command_line += '--prune-level %s ' % int(megahit_conf['--prune-level'])
         if megahit_conf['--prune-depth'] != None:
-            command_line += '--prune-depth '+str(megahit_conf['--prune-depth'])+' '
+            command_line += '--prune-depth %s ' % int(megahit_conf['--prune-depth'])
         if megahit_conf['--low-local-ratio'] != None:
             command_line += '--low-local-ratio '+str(megahit_conf['--low-local-ratio'])+' '
         if megahit_conf['--max-tip-len'] != None:
-            command_line += '--max-tip-len '+str(megahit_conf['--max-tip-len'])+' '
+            command_line += '--max-tip-len %s ' % int(megahit_conf['--max-tip-len'])
         if megahit_conf['--no-local'] != None:
             command_line += '--no-local '
         if megahit_conf['--kmin-1pass'] != None:
@@ -48,13 +48,13 @@ class Assembly:
         if megahit_conf['-m'] != None:
             command_line += '-m '+str(megahit_conf['-m'])+' '
         if megahit_conf['--mem-flag'] != None:
-            command_line += '--mem-flag '+str(megahit_conf['--mem-flag'])+' '
+            command_line += '--mem-flag %s ' % int(megahit_conf['--mem-flag'])
         if megahit_conf['-t'] != None:
-            command_line += '-t '+str(megahit_conf['-t'])+' '
+            command_line += '-t %s ' % int(megahit_conf['-t'])
         if megahit_conf['--no-hw-accel'] != None:
             command_line += '--no-hw-accel '
         if megahit_conf['--min-contig-len'] != None:
-            command_line += '--min-contig-len '+str(megahit_conf['--min-contig-len'])+' '
+            command_line += '--min-contig-len %s ' % int(megahit_conf['--min-contig-len'])
         command_line += '-r '+self.input_file+' -o '+self.result_dir+'/megahit_out'
 
         completed_process = subprocess.run(command_line, shell=True)
@@ -76,23 +76,23 @@ class Assembly:
         megahit_conf = self.conf['megahit']
         command_line = 'megahit '
         if megahit_conf['--min-count'] != None:
-            command_line += '--min-count '+str(megahit_conf['--min-count'])+' '
+            command_line += '--min-count %s ' % int(megahit_conf['--min-count'])
         if megahit_conf['--k-list'] != None:
             command_line += '--k-list '+str(megahit_conf['--k-list'])+' '
         if megahit_conf['--no-mercy'] != None:
             command_line += '--no-mercy '
         if megahit_conf['--bubble-level'] != None:
-            command_line += '--bubble-level '+str(megahit_conf['--bubble-level'])+' '
+            command_line += '--bubble-level %s ' % int(megahit_conf['--bubble-level'])
         if megahit_conf['--merge-level'] != None:
             command_line += '--merge-level '+str(megahit_conf['--merge-level'])+' '
         if megahit_conf['--prune-level'] != None:
-            command_line += '--prune-level '+str(megahit_conf['--prune-level'])+' '
+            command_line += '--prune-level %s ' % int(megahit_conf['--prune-level'])
         if megahit_conf['--prune-depth'] != None:
-            command_line += '--prune-depth '+str(megahit_conf['--prune-depth'])+' '
+            command_line += '--prune-depth %s ' % int(megahit_conf['--prune-depth'])
         if megahit_conf['--low-local-ratio'] != None:
             command_line += '--low-local-ratio '+str(megahit_conf['--low-local-ratio'])+' '
         if megahit_conf['--max-tip-len'] != None:
-            command_line += '--max-tip-len '+str(megahit_conf['--max-tip-len'])+' '
+            command_line += '--max-tip-len %s ' % int(megahit_conf['--max-tip-len'])
         if megahit_conf['--no-local'] != None:
             command_line += '--no-local '
         if megahit_conf['--kmin-1pass'] != None:
@@ -100,13 +100,13 @@ class Assembly:
         if megahit_conf['-m'] != None:
             command_line += '-m '+str(megahit_conf['-m'])+' '
         if megahit_conf['--mem-flag'] != None:
-            command_line += '--mem-flag '+str(megahit_conf['--mem-flag'])+' '
+            command_line += '--mem-flag %s ' % int(megahit_conf['--mem-flag'])
         if megahit_conf['-t'] != None:
-            command_line += '-t '+str(megahit_conf['-t'])+' '
+            command_line += '-t %s ' % int(megahit_conf['-t'])
         if megahit_conf['--no-hw-accel'] != None:
             command_line += '--no-hw-accel '
         if megahit_conf['--min-contig-len'] != None:
-            command_line += '--min-contig-len '+str(megahit_conf['--min-contig-len'])+' '
+            command_line += '--min-contig-len %s ' % int(megahit_conf['--min-contig-len'])
         command_line += '-1 '+self.input_file_1+' -2 '+self.input_file_2+' -o '+self.result_dir+'/megahit_out'
         
         completed_process = subprocess.run(command_line, shell=True)
@@ -130,9 +130,9 @@ class Assembly:
         if spades_conf['--iontorrent'] != None:
             command_line += '--iontorrent '
         if spades_conf['-t'] != None:
-            command_line += '-t '+str(spades_conf['-t'])+' '
+            command_line += '-t %s ' % int(spades_conf['-t'])
         if spades_conf['-m'] != None:
-            command_line += '-m '+str(spades_conf['-m'])+' '
+            command_line += '-m %s ' % int(spades_conf['-m'])
         if spades_conf['-k'] != None:
             command_line += '-k '+str(spades_conf['-k'])+' '
         if spades_conf['--cov-cutoff'] != None:
@@ -162,9 +162,9 @@ class Assembly:
         if spades_conf['--iontorrent'] != None:
             command_line += '--iontorrent '
         if spades_conf['-t'] != None:
-            command_line += '-t '+str(spades_conf['-t'])+' '
+            command_line += '-t %s ' % int(spades_conf['-t'])
         if spades_conf['-m'] != None:
-            command_line += '-m '+str(spades_conf['-m'])+' '
+            command_line += '-m %s ' % int(spades_conf['-m'])
         if spades_conf['-k'] != None:
             command_line += '-k '+str(spades_conf['-k'])+' '
         if spades_conf['--cov-cutoff'] != None:
@@ -198,9 +198,9 @@ class Assembly:
             print('please choose pacbio or nanopore in conf.json. use pacbio by default.')
             command_line = os.path.dirname(os.path.realpath(__file__))+'/external_tools/SPAdes/bin/spades.py --pacbio '+self.input_file+' '
         if spades_conf['-t'] != None:
-            command_line += '-t '+str(spades_conf['-t'])+' '
+            command_line += '-t %s ' % int(spades_conf['-t'])
         if spades_conf['-m'] != None:
-            command_line += '-m '+str(spades_conf['-m'])+' '
+            command_line += '-m %s ' % int(spades_conf['-m'])
         if spades_conf['-k'] != None:
             command_line += '-k '+str(spades_conf['-k'])+' '
         if spades_conf['--cov-cutoff'] != None:
@@ -438,7 +438,7 @@ class Assembly:
             command_line += '-nanopore-corrected '
         else:
             command_line += '-pacbio-raw '
-        command_line += self.input_file
+        command_line += self.input_file + " gnuplotTested=true "
         
         completed_process = subprocess.run(command_line, shell=True)
         if completed_process.returncode == 0:
