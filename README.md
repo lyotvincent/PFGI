@@ -40,6 +40,11 @@ The ✔ in 'conda' column means that the software cound install by conda.
 |minimap2|✔|<https://github.com/lh3/minimap2>|
 |biopython|✔|pip|
 |bcbio-gff|✔|pip|
+|datasketch|×|pip|
+|xlrd|✔|pip|
+|pyyaml|✔|pip|
 
-Install in one line:
-`conda install -y fastqc fastp trimmomatic cutadapt sickle-trim megahit spades velvet canu quast blast prokka bowtie2 snap-aligner bowtie2 samtools minimap2 biopython bcbio-gff`
+An example for installing these software :
+`conda install -y fastqc`
+
+Besides, user also show install 
