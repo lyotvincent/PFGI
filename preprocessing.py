@@ -35,7 +35,7 @@ class Preprocessing:
         if fastqc_conf['-l'] != None:
             com += "-l "+str(fastqc_conf['-l'])+' '
         if fastqc_conf['-k'] != None:
-            com += "-k %s " % int(fastqc_conf['-k'])'
+            com += "-k %s " % int(fastqc_conf['-k'])
         com += self.input_file
         try:
             completed_process = subprocess.run(com, shell=True)
