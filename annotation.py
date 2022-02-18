@@ -336,7 +336,7 @@ class Resequencing:
 
     def cds_annotation_ngs(self, closest_accession_version, assembly_result):
         print("begin cds annotation")
-        alignment_tool = 'snap' if self.conf['annotation']["cds_annotation"]['alignment_tool']['snap'] != None else "bowtie2"
+        alignment_tool = 'snap' if self.conf['annotation']["cds_annotation"]['alignment_tool']['snap'] == True else "bowtie2"
         if alignment_tool == 'bowtie2':
             subprocess.run('bowtie2-build '+self.result_dir+'/identification/'+closest_accession_version+'.fasta '+self.result_dir+'/identification/'+closest_accession_version+'_bowtie2_index', shell=True, check=True)
         else:
