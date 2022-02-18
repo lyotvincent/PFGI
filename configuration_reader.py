@@ -81,9 +81,9 @@ class ConfigurationReader:
         if preprocessing_sheet.cell_value(21, 3) != "":
             self.conf["preprocessing"]["fastp"]["--poly_x_min_len"] = preprocessing_sheet.cell_value(21, 3)
         if preprocessing_sheet.cell_value(22, 3) != "":
-            self.conf["preprocessing"]["fastp"]["--cut_by_quality5"] = preprocessing_sheet.cell_value(22, 3)
+            self.conf["preprocessing"]["fastp"]["--cut_front"] = preprocessing_sheet.cell_value(22, 3)
         if preprocessing_sheet.cell_value(23, 3) != "":
-            self.conf["preprocessing"]["fastp"]["--cut_by_quality3"] = preprocessing_sheet.cell_value(23, 3)
+            self.conf["preprocessing"]["fastp"]["--cut_end"] = preprocessing_sheet.cell_value(23, 3)
         if preprocessing_sheet.cell_value(24, 3) != "":
             self.conf["preprocessing"]["fastp"]["-r"] = preprocessing_sheet.cell_value(24, 3)
         if preprocessing_sheet.cell_value(25, 3) != "":
