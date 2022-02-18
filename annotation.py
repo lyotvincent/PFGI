@@ -62,7 +62,7 @@ class Resequencing:
                 else:
                     print('An error occurred in Assembly. Please install QUAST.')
                     print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                    subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
             except Exception as e:
                 print(e)
                 print("Please install QUAST")
@@ -93,7 +93,7 @@ class Resequencing:
                 else:
                     print('An error occurred in Assembly. Please install QUAST.')
                     print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                    subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
             except Exception as e:
                 print(e)
                 print("Please install QUAST")
@@ -196,7 +196,7 @@ class Resequencing:
                 else:
                     print('An error occurred in Assembly. Please install QUAST.')
                     print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                    subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
             except Exception as e:
                 print(e)
                 print("Please install QUAST")
@@ -212,7 +212,7 @@ class Resequencing:
                 else:
                     print('An error occurred in Assembly. Please install QUAST.')
                     print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/quast-5.0.2/quast.py '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
+                    subprocess.run('quast '+assembly_result+' --min-contig 50 -o '+self.result_dir+'/identification/quast_out', shell=True, check=True)
             except Exception as e:
                 print(e)
                 print("Please install QUAST")
@@ -340,7 +340,7 @@ class Resequencing:
         if alignment_tool == 'bowtie2':
             subprocess.run('bowtie2-build '+self.result_dir+'/identification/'+closest_accession_version+'.fasta '+self.result_dir+'/identification/'+closest_accession_version+'_bowtie2_index', shell=True, check=True)
         else:
-            subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/snap-aligner index '+self.result_dir+'/identification/'+closest_accession_version+'.fasta '+self.result_dir+'/identification/'+closest_accession_version+'_index', shell=True, check=True)
+            subprocess.run('snap-aligner index '+self.result_dir+'/identification/'+closest_accession_version+'.fasta '+self.result_dir+'/identification/'+closest_accession_version+'_index', shell=True, check=True)
         if self.input_file_paired == None:
             assembly_conf = self.conf['identification']['assembly']
             if assembly_conf['enable'] != False:
@@ -349,12 +349,12 @@ class Resequencing:
                 else:
                     scripts.fasta2fastq.fasta_to_fastq_by_biopython(assembly_result, self.result_dir)
                     assembly_result = self.result_dir+"/identification/assembly_result.fastq"
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/snap-aligner single '+self.result_dir+'/identification/'+closest_accession_version+'_index '+assembly_result+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
+                    subprocess.run('snap-aligner single '+self.result_dir+'/identification/'+closest_accession_version+'_index '+assembly_result+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
             else:
                 if alignment_tool == 'bowtie2':
                     subprocess.run('bowtie2 -x '+self.result_dir+'/identification/'+closest_accession_version+'_bowtie2_index -U '+self.input_file+' -S '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
                 else:
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/snap-aligner single '+self.result_dir+'/identification/'+closest_accession_version+'_index '+self.input_file+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
+                    subprocess.run('snap-aligner single '+self.result_dir+'/identification/'+closest_accession_version+'_index '+self.input_file+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
             # subprocess.run('bowtie2 -x '+self.result_dir+'/identification/'+closest_accession_version+'_bowtie2_index -U '+self.input_file+' -S '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
         else:
             assembly_conf = self.conf['identification']['assembly']
@@ -364,17 +364,17 @@ class Resequencing:
                 else:
                     scripts.fasta2fastq.fasta_to_fastq_by_biopython(assembly_result, self.result_dir)
                     assembly_result = self.result_dir+"/identification/assembly_result.fastq"
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/snap-aligner single '+self.result_dir+'/identification/'+closest_accession_version+'_index '+assembly_result+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
+                    subprocess.run('snap-aligner single '+self.result_dir+'/identification/'+closest_accession_version+'_index '+assembly_result+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
             else:
                 if alignment_tool == 'bowtie2':
                     subprocess.run('bowtie2 -x '+self.result_dir+'/identification/'+closest_accession_version+'_bowtie2_index -1 '+self.input_file+' -2 '+self.input_file_paired+' -S '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
                 else:
-                    subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/snap-aligner paired '+self.result_dir+'/identification/'+closest_accession_version+'_index '+self.input_file+' '+self.input_file_paired+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
+                    subprocess.run('snap-aligner paired '+self.result_dir+'/identification/'+closest_accession_version+'_index '+self.input_file+' '+self.input_file_paired+' -o '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
             # subprocess.run('bowtie2 -x '+self.result_dir+'/identification/'+closest_accession_version+'_bowtie2_index -1 '+self.input_file+' -2 '+self.input_file_paired+' -S '+self.result_dir+'/identification/alignment_result.sam', shell=True, check=True)
 
         print("begin sort_sam")
-        subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/samtools-1.10/samtools view -bS '+self.result_dir+'/identification/alignment_result.sam > '+self.result_dir+'/identification/output.bam', shell=True, check=True)
-        subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/samtools-1.10/samtools sort '+self.result_dir+'/identification/output.bam -o '+self.result_dir+'/identification/alignment_result.sorted.sam -O sam', shell=True, check=True)
+        subprocess.run('samtools view -bS '+self.result_dir+'/identification/alignment_result.sam > '+self.result_dir+'/identification/output.bam', shell=True, check=True)
+        subprocess.run('samtools sort '+self.result_dir+'/identification/output.bam -o '+self.result_dir+'/identification/alignment_result.sorted.sam -O sam', shell=True, check=True)
         print("end sort_sam")
 
         scripts.download_gb.download_by_accession_version(self.result_dir, closest_accession_version)
@@ -443,7 +443,7 @@ class Resequencing:
         subprocess.run(command_line % (closest_accession_version, closest_accession_version), shell=True, check=True)
 
         print("begin sort_sam")
-        subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/samtools-1.10/samtools sort '+self.result_dir+'/identification/minimap2_'+closest_accession_version+'_result.sam -o '+self.result_dir+'/identification/minimap2_'+closest_accession_version+'_result.sorted.sam -O sam', shell=True, check=True)
+        subprocess.run('samtools sort '+self.result_dir+'/identification/minimap2_'+closest_accession_version+'_result.sam -o '+self.result_dir+'/identification/minimap2_'+closest_accession_version+'_result.sorted.sam -O sam', shell=True, check=True)
         print("end sort_sam")
         
         scripts.download_gb.download_by_accession_version(self.result_dir, closest_accession_version)
@@ -470,7 +470,7 @@ class Resequencing:
     def mlst(self, contigs):
         print('begin mlst ngs')
         os.mkdir(self.result_dir+'/mlst')
-        subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/mlst/bin/mlst '+contigs+' --json '+self.result_dir+'/mlst/mlst_result.json', shell=True, check=True)
+        subprocess.run('mlst '+contigs+' --json '+self.result_dir+'/mlst/mlst_result.json', shell=True, check=True)
         print('end mlst ngs')
 
         
