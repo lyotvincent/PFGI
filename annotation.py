@@ -116,7 +116,7 @@ class Resequencing:
         # time.sleep(1000)
         
         blastn_conf = self.conf['identification']['blastn']
-        blastn_cline = NcbiblastnCommandline(cmd=os.path.dirname(os.path.realpath(__file__))+'/external_tools/blastn', query=blast_input, db=self.conf["identification"]['blastn']["blast_db_path"], outfmt=7, out=self.result_dir+"/identification/ncbi_fungi_blast_out.xml")
+        blastn_cline = NcbiblastnCommandline(cmd='blastn', query=blast_input, db=self.conf["identification"]['blastn']["blast_db_path"], outfmt=7, out=self.result_dir+"/identification/ncbi_fungi_blast_out.xml")
         blastn_cline.set_parameter('num_threads', int(blastn_conf['num_threads']))
         blastn_cline.set_parameter('num_alignments', int(blastn_conf['num_alignments']))
         blastn_cline.set_parameter('evalue', float(blastn_conf['evalue']))
@@ -243,7 +243,7 @@ class Resequencing:
         # time.sleep(900)
 
         blastn_conf = self.conf['identification']['blastn']
-        blastn_cline = NcbiblastnCommandline(cmd=os.path.dirname(os.path.realpath(__file__))+'/external_tools/blastn', query=blast_input, db=self.conf["identification"]['blastn']["blast_db_path"], outfmt=7, out=self.result_dir+"/identification/ncbi_fungi_blast_out.xml", evalue=1e-5)
+        blastn_cline = NcbiblastnCommandline(cmd='blastn', query=blast_input, db=self.conf["identification"]['blastn']["blast_db_path"], outfmt=7, out=self.result_dir+"/identification/ncbi_fungi_blast_out.xml", evalue=1e-5)
         
         # blastn_cline.set_parameter('num_threads', int(blastn_conf['num_threads']))
         blastn_cline.set_parameter('num_threads', int(blastn_conf['num_threads']))
