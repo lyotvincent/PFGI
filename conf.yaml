@@ -57,9 +57,9 @@ preprocessing:
         #--poly_x_min_len: the minimum length to detect polyX in the read tail. 10 by default. (int [=10])
         --poly_x_min_len: ~
         #-5: move a sliding window from front (5') to tail, drop the bases in the window if its mean quality < threshold, stop otherwise.
-        --cut_by_quality5: ~
+        --cut_front: ~
         #-3: move a sliding window from tail (3') to front, drop the bases in the window if its mean quality < threshold, stop otherwise.
-        --cut_by_quality3: ~
+        --cut_tail: ~
         #-r: move a sliding window from front to tail, if meet one window with mean quality < threshold, drop the bases in the window and the right part, and then stop.
         -r: ~
         #-W: the window size option shared by cut_front, cut_tail or cut_sliding. Range: 1~1000 default: 4 (int [=4])
