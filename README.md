@@ -43,8 +43,8 @@ The ✔ in 'conda' column means that the software cound install by conda.
 |datasketch|×|pip|
 |xlrd|✔|pip|
 |pyyaml|✔|pip|
+|mlst|✔|https://github.com/tseemann/mlst|
 
 An example for installing these software :
 `conda install -y fastqc`
 
-Besides, user also show install 
