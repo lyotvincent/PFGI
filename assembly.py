@@ -64,7 +64,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install megahit.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run('%s/external_tools/MEGAHIT/'%os.path.dirname(os.path.realpath(__file__))+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install megahit')
@@ -116,7 +116,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install megahit.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run('%s/external_tools/MEGAHIT/'%os.path.dirname(os.path.realpath(__file__))+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install megahit.')
@@ -148,7 +148,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install spades.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/SPAdes/bin/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install spades.')
@@ -180,7 +180,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install spades.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/SPAdes/bin/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install spades.')
@@ -196,7 +196,7 @@ class Assembly:
             command_line = 'spades.py --nanopore '+self.input_file+' '
         else:
             print('please choose pacbio or nanopore in conf.json. use pacbio by default.')
-            command_line = os.path.dirname(os.path.realpath(__file__))+'/external_tools/SPAdes/bin/spades.py --pacbio '+self.input_file+' '
+            command_line = 'spades.py --pacbio '+self.input_file+' '
         if spades_conf['-t'] != None:
             command_line += '-t %s ' % int(spades_conf['-t'])
         if spades_conf['-m'] != None:
@@ -216,7 +216,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install spades.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/SPAdes/bin/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install spades.')
@@ -248,7 +248,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install velvet.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install velvet.')
@@ -312,7 +312,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install velvet.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install velvet.')
@@ -345,7 +345,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install velvet.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install velvet.')
@@ -409,7 +409,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install velvet.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install velvet.')
@@ -447,7 +447,7 @@ class Assembly:
             print('An error occurred in Assembly. Please install canu.')
             print('stdout = %s, stderr = %s.' % (completed_process.stdout, completed_process.stderr))
             try:
-                completed_process = subprocess.run(os.path.dirname(os.path.realpath(__file__))+'/external_tools/canu-2.0/bin/'+command_line, shell=True, check=True)
+                completed_process = subprocess.run(command_line, shell=True, check=True)
             except Exception as e:
                 print(e)
                 print('An error occurred in Assembly. Please install canu.')
