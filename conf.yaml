@@ -385,50 +385,50 @@ annotation:
             bowtie2: True
             snap: True
             minimap2:
-            #-H: use homopolymer-compressed k-mer (preferrable for PacBio)
-            -H: ~
-            #-k: INT       k-mer size (no larger than 28) [15]
-            -k: ~
-            #-w: INT       minimizer window size [10]
-            -w: ~
-            #-I: NUM       split index for every ~NUM input bases [4G]
-            -I: ~
-            #-f: FLOAT     filter out top FLOAT fraction of repetitive minimizers [0.0002]
-            -f: ~
-            #-g: NUM       stop chain enlongation if there are no minimizers in INT-bp [5000]
-            -g: ~
-            #-G: NUM       max intron length (effective with -xsplice; changing -r) [200k]
-            -G: ~
-            #-F: NUM       max fragment length (effective with -xsr or in the fragment mode) [800]
-            -F: ~
-            #-r: NUM       bandwidth used in chaining and DP-based alignment [500]
-            -r: ~
-            #-n: INT       minimal number of minimizers on a chain [3]
-            -n: ~
-            #-m: INT       minimal chaining score (matching bases minus log gap penalty) [40]
-            -m: ~
-            #-X: skip self and dual mappings (for the all-vs-all mode)
-            -X: ~
-            #-p: FLOAT     min secondary-to-primary score ratio [0.8]
-            -p: ~
-            #-N: INT       retain at most INT secondary alignments [5]
-            -N: ~
-            #-A: INT       matching score [2]
-            -A: ~
-            #-B: INT       mismatch penalty [4]
-            -B: ~
-            #-O: INT[,INT] gap open penalty [4,24]
-            -O: ~
-            #-E: INT[,INT] gap extension penalty; a k-long gap costs min{O1k*E1O2+k*E2} [2,1]
-            -E: ~
-            #-z: INT[,INT] Z-drop score and inversion Z-drop score [400200]
-            -z: ~
-            #-s: INT       minimal peak DP alignment score [80]
-            -s: ~
-            #-u: CHAR      how to find GT-AG. f:transcript strand, b:both strands, n:don't match GT-AG [n]
-            -u: ~
-            #-x: STR       preset (always applied before other options; see minimap2.1 for details) []  - map-pb/map-ont: PacBio/Nanopore vs reference mapping  - ava-pb/ava-ont: PacBio/Nanopore read overlap  - asm5/asm10/asm20: asm-to-ref mapping, for ~0.1/1/5% sequence divergence  - splice: long-read spliced alignment  - sr: genomic short-read mapping
-            -x: ~
+                #-H: use homopolymer-compressed k-mer (preferrable for PacBio)
+                -H: ~
+                #-k: INT       k-mer size (no larger than 28) [15]
+                -k: ~
+                #-w: INT       minimizer window size [10]
+                -w: ~
+                #-I: NUM       split index for every ~NUM input bases [4G]
+                -I: ~
+                #-f: FLOAT     filter out top FLOAT fraction of repetitive minimizers [0.0002]
+                -f: ~
+                #-g: NUM       stop chain enlongation if there are no minimizers in INT-bp [5000]
+                -g: ~
+                #-G: NUM       max intron length (effective with -xsplice; changing -r) [200k]
+                -G: ~
+                #-F: NUM       max fragment length (effective with -xsr or in the fragment mode) [800]
+                -F: ~
+                #-r: NUM       bandwidth used in chaining and DP-based alignment [500]
+                -r: ~
+                #-n: INT       minimal number of minimizers on a chain [3]
+                -n: ~
+                #-m: INT       minimal chaining score (matching bases minus log gap penalty) [40]
+                -m: ~
+                #-X: skip self and dual mappings (for the all-vs-all mode)
+                -X: ~
+                #-p: FLOAT     min secondary-to-primary score ratio [0.8]
+                -p: ~
+                #-N: INT       retain at most INT secondary alignments [5]
+                -N: ~
+                #-A: INT       matching score [2]
+                -A: ~
+                #-B: INT       mismatch penalty [4]
+                -B: ~
+                #-O: INT[,INT] gap open penalty [4,24]
+                -O: ~
+                #-E: INT[,INT] gap extension penalty; a k-long gap costs min{O1k*E1O2+k*E2} [2,1]
+                -E: ~
+                #-z: INT[,INT] Z-drop score and inversion Z-drop score [400200]
+                -z: ~
+                #-s: INT       minimal peak DP alignment score [80]
+                -s: ~
+                #-u: CHAR      how to find GT-AG. f:transcript strand, b:both strands, n:don't match GT-AG [n]
+                -u: ~
+                #-x: STR       preset (always applied before other options; see minimap2.1 for details) []  - map-pb/map-ont: PacBio/Nanopore vs reference mapping  - ava-pb/ava-ont: PacBio/Nanopore read overlap  - asm5/asm10/asm20: asm-to-ref mapping, for ~0.1/1/5% sequence divergence  - splice: long-read spliced alignment  - sr: genomic short-read mapping
+                -x: ~
     mlst: True
     prokka:
         enable: True
